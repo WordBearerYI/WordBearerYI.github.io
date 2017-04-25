@@ -37,7 +37,7 @@ Quick StartFace Landmark detection1234567891011121314151617im">
 				<h1 class="site-name"><a href="/" title="Loyal Legio I">Loyal Legio I</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -50,7 +50,7 @@ Quick StartFace Landmark detection1234567891011121314151617im">
 					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -74,7 +74,7 @@ Quick StartFace Landmark detection1234567891011121314151617im">
     </p>
   <p class="article-time">
     <time datetime="2017-04-25T02:10:57.000Z" itemprop="datePublished">2017-04-25</time>
-    更新日期:<time datetime="2017-04-25T10:59:48.000Z" itemprop="dateModified">2017-04-25</time>
+    Updated:<time datetime="2017-04-25T11:26:56.000Z" itemprop="dateModified">2017-04-25</time>
     
   </p>
 </header>
@@ -82,13 +82,17 @@ Quick StartFace Landmark detection1234567891011121314151617im">
 		
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Face-Landmark-detection"><span class="toc-number">1.1.</span> <span class="toc-text">Face Landmark detection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Naive-Face-Averaging"><span class="toc-number">1.2.</span> <span class="toc-text">Naïve Face Averaging</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Face-Landmark-detection"><span class="toc-number">1.1.</span> <span class="toc-text">Face Landmark detection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Face-Landmarks-detection"><span class="toc-number">1.2.</span> <span class="toc-text">Face Landmarks detection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Naive-Face-Averaging"><span class="toc-number">1.3.</span> <span class="toc-text">Naïve Face Averaging</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.4.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.5.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
 		</div>
 		
 		<p>After days of trying, I finally made it work! The program is based on python and opencv </p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Face-Landmark-detection"><a href="#Face-Landmark-detection" class="headerlink" title="Face Landmark detection"></a>Face Landmark detection</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> dlib</div><div class="line">PREDICTOR_PATH = <span class="string">"/shape_predictor_68_face_landmarks.dat"</span></div><div class="line"><span class="comment">#TensorFace/openface/models/dlib/shape_predictor_68_face_landmarks.dat</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">detectFaceKeyPoint</span><span class="params">(img)</span>:</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">NoFaces</span><span class="params">(Exception)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line">    rects = detector(img,<span class="number">1</span>)</div><div class="line">    <span class="keyword">if</span> len(rects) &gt; <span class="number">1</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"multiple faces detected!"</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    <span class="keyword">elif</span> len(rects) == <span class="number">0</span>:</div><div class="line">        <span class="keyword">raise</span> NoFaces</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    <span class="keyword">elif</span> len(rects) == <span class="number">1</span>:</div><div class="line">        landmarks = np.array([[p.x,p.y] <span class="keyword">for</span> p <span class="keyword">in</span> predictor(img,rects[<span class="number">0</span>]).parts()])</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Face-Landmarks-detection"><a href="#Face-Landmarks-detection" class="headerlink" title="Face Landmarks detection"></a>Face Landmarks detection</h3><p>We need to align all key elements on the face  in order to generate a clear average face image. </p>
+<p>First of all we need to make pictures into the same size, furthermore, making all of the heads into the same scale. As a matter of fact, people have approximately equavelant distance between their two eye corners.</p>
+<p>To find the eye corner on every face, we can use the previous found face landmarks.<br>Left eye corner is point Number 36, right corner is 45.</p>
+<p><img src="/images/sblc.jpg" width="50%" height="50%"></p>
 <h3 id="Naive-Face-Averaging"><a href="#Naive-Face-Averaging" class="headerlink" title="Naïve Face Averaging"></a>Naïve Face Averaging</h3><p>It’s called naïve face averaging. We just align the eye corners of our frontal face image before we take average on the grey scale on every pixels. Be careful to make all grey value between 0-1.</p>
 <p><img src="/images/naive_avg_face.jpg" alt="naive" title="naive face averaging result"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">forceAvg</span><span class="params">(totalImagesArray)</span>:</span></div><div class="line">    sumimg=np.zeros((fixed_width,fixed_height))</div><div class="line">    totalImagesArray = np.array(totalImagesArray)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(totalImagesArray)):</div><div class="line">        sumimg = sumimg + totalImagesArray[i]</div><div class="line">    <span class="comment">#sumimg = sum (totalImagesArray)</span></div><div class="line">    <span class="comment">#print np.shape(sumimg),sumimg</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"sum"</span>, sumimg,<span class="string">"shape"</span>,np.shape(sumimg)</div><div class="line">    sumimg = sumimg / len(totalImagesArray)/<span class="number">256</span></div><div class="line">    <span class="comment">#sumimg = sumimg.astype(int)</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"avg"</span>, sumimg,<span class="string">"shape"</span>,np.shape(sumimg)</div><div class="line">    cv2.imshow(<span class="string">"naive"</span>,sumimg)</div><div class="line">    cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
@@ -128,15 +132,15 @@ Quick StartFace Landmark detection1234567891011121314151617im">
 
 	
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Face-Landmark-detection"><span class="toc-number">1.1.</span> <span class="toc-text">Face Landmark detection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Naive-Face-Averaging"><span class="toc-number">1.2.</span> <span class="toc-text">Naïve Face Averaging</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Face-Landmark-detection"><span class="toc-number">1.1.</span> <span class="toc-text">Face Landmark detection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Face-Landmarks-detection"><span class="toc-number">1.2.</span> <span class="toc-text">Face Landmarks detection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Naive-Face-Averaging"><span class="toc-number">1.3.</span> <span class="toc-text">Naïve Face Averaging</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.4.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.5.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -144,7 +148,7 @@ Quick StartFace Landmark detection1234567891011121314151617im">
   
 
   <div class="rsspart">
-	<a href="null" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="null" target="_blank" title="rss">RSS</a>
 </div>
 
 </aside>
