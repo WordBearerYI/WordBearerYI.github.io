@@ -26,7 +26,8 @@
 <meta property="og:image" content="http://yoursite.com/images/pasted-4.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-5.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-6.png">
-<meta property="og:updated_time" content="2017-05-10T00:44:07.000Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-7.png">
+<meta property="og:updated_time" content="2017-05-10T01:29:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Delaunay Trianglulation and subdivision under opencv">
 <meta name="twitter:description" content="Delaunay triangulationI.IntroductionA Delaunay triangulation for a set P of points in a plane is a triangulation DT(P) such that no point in P is inside any triangle in DT(P).i.e. it’s required to use">
@@ -310,7 +311,10 @@
 <p><img src="/images/pasted-6.png" alt="upload successful"></p>
 <p>As you can see, if two triangles do not meet the Delaunay condition, switching the common edge BD for the common edge AC produces two triangles that do meet the Delaunay condition</p>
 <h6 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h6><p>(not finished)</p>
-<p>Many algorithms for computing Delaunay triangulations rely on fast operations for detecting when a point is within a triangle’s circumcircle and an efficient data structure for storing triangles and edges. In two dimensions, one way to detect if point D lies in the circumcircle of A, B, C is to evaluate the </p>
+<p>Many algorithms for computing Delaunay triangulations rely on fast operations for detecting when a point is within a triangle’s circumcircle and an efficient data structure for storing triangles and edges. In two dimensions, one way to detect if point D lies in the circumcircle of A, B, C is to evaluate the</p>
+<hr>
+<h6 id="concern-type-and-function-in-opencv"><a href="#concern-type-and-function-in-opencv" class="headerlink" title="concern type and function in opencv"></a>concern type and function in opencv</h6><p>Rect:<br>typedef struct<br>{<br>int x; /<em> left x </em>/<br>int y; /<em> up y </em>/<br>int width; /<em> width </em>/<br>int height; /<em> height </em>/<br>}<br>CvRect;</p>
+<p><img src="/images/pasted-7.png" alt="upload successful"></p>
 
       
     </div>
@@ -322,7 +326,7 @@
         <p><span>本文标题:</span><a href="/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/">Delaunay Trianglulation and subdivision under opencv</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Syd SHI YI</a></p>
         <p><span>发布时间:</span>2017-05-10, 02:19:05</p>
-        <p><span>最后更新:</span>2017-05-10, 02:44:07</p>
+        <p><span>最后更新:</span>2017-05-10, 03:29:24</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/" title="Delaunay Trianglulation and subdivision under opencv">http://yoursite.com/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/　　作者: Syd SHI YI" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -352,7 +356,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Delaunay-triangulation"><span class="toc-number">1.</span> <span class="toc-text">Delaunay triangulation</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#I-Introduction"><span class="toc-number">1.0.1.</span> <span class="toc-text">I.Introduction</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#II-Properties"><span class="toc-number">1.0.2.</span> <span class="toc-text">II.Properties</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#III-Visual-Delaunay-generation"><span class="toc-number">1.0.3.</span> <span class="toc-text">III.Visual Delaunay generation</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Algorithms"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">Algorithms</span></a></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Delaunay-triangulation"><span class="toc-number">1.</span> <span class="toc-text">Delaunay triangulation</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#I-Introduction"><span class="toc-number">1.0.1.</span> <span class="toc-text">I.Introduction</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#II-Properties"><span class="toc-number">1.0.2.</span> <span class="toc-text">II.Properties</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#III-Visual-Delaunay-generation"><span class="toc-number">1.0.3.</span> <span class="toc-text">III.Visual Delaunay generation</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Algorithms"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">Algorithms</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#concern-type-and-function-in-opencv"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">concern type and function in opencv</span></a></li></ol></li></ol></li></ol></li></ol>
         
     </div>
     <style>
