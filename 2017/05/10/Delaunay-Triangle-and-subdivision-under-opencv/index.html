@@ -15,20 +15,22 @@
 
 
 
-<meta name="description" content="Similarity TransformationIt’s high school geometry time. Nonetheless, I will do it here again because it’s quite important in the field of computer vision and graphics as we will see in my project of">
-<meta name="keywords" content="Geometry basics">
+<meta name="description" content="Delaunay triangulationI.IntroductionA Delaunay triangulation for a set P of points in a plane is a triangulation DT(P) such that no point in P is inside any triangle in DT(P).i.e. it’s required to use">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Similarity Transformation in Geometry">
-<meta property="og:url" content="http://yoursite.com/2017/04/25/My-New-Post/index.html">
+<meta property="og:title" content="Delaunay Trianglulation and subdivision under opencv">
+<meta property="og:url" content="http://yoursite.com/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/index.html">
 <meta property="og:site_name" content="Syd">
-<meta property="og:description" content="Similarity TransformationIt’s high school geometry time. Nonetheless, I will do it here again because it’s quite important in the field of computer vision and graphics as we will see in my project of">
-<meta property="og:image" content="http://yoursite.com/images/pasted-0.png">
-<meta property="og:image" content="http://yoursite.com/images/pasted-1.png">
-<meta property="og:updated_time" content="2017-05-04T23:04:51.000Z">
+<meta property="og:description" content="Delaunay triangulationI.IntroductionA Delaunay triangulation for a set P of points in a plane is a triangulation DT(P) such that no point in P is inside any triangle in DT(P).i.e. it’s required to use">
+<meta property="og:image" content="http://yoursite.com/images/pasted-3.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-4.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-5.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-6.png">
+<meta property="og:updated_time" content="2017-05-10T00:44:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Similarity Transformation in Geometry">
-<meta name="twitter:description" content="Similarity TransformationIt’s high school geometry time. Nonetheless, I will do it here again because it’s quite important in the field of computer vision and graphics as we will see in my project of">
-<meta name="twitter:image" content="http://yoursite.com/images/pasted-0.png">
+<meta name="twitter:title" content="Delaunay Trianglulation and subdivision under opencv">
+<meta name="twitter:description" content="Delaunay triangulationI.IntroductionA Delaunay triangulation for a set P of points in a plane is a triangulation DT(P) such that no point in P is inside any triangle in DT(P).i.e. it’s required to use">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-3.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -60,7 +62,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Similarity Transformation in Geometry | Syd</title>
+<title>Delaunay Trianglulation and subdivision under opencv | Syd</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -260,11 +262,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-My-New-Post" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Delaunay-Triangle-and-subdivision-under-opencv" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/25/My-New-Post/" class="article-date">
-      <time datetime="2017-04-25T01:50:00.000Z" itemprop="datePublished">2017-04-25</time>
+      <a href="/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/" class="article-date">
+      <time datetime="2017-05-10T00:19:05.000Z" itemprop="datePublished">2017-05-10</time>
 </a>
 
 
@@ -279,7 +281,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Similarity Transformation in Geometry
+      Delaunay Trianglulation and subdivision under opencv
     </h1>
   
 
@@ -287,16 +289,8 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Computer-Vision/">Computer Vision</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Geometry-basics/">Geometry basics</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -304,12 +298,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Similarity-Transformation"><a href="#Similarity-Transformation" class="headerlink" title="Similarity Transformation"></a>Similarity Transformation</h2><p>It’s high school geometry time. Nonetheless, I will do it here again because it’s quite important in the field of computer vision and graphics as we will see in my project of Face averaging.</p>
-<p>In the same dimension either 3D or 2D</p>
-<p>x2= λ[R|T] x1 </p>
-<p><img src="/images/pasted-0.png" alt="upload successful"></p>
-<p><img src="/images/pasted-1.png" alt="upload successful"></p>
-<p>We can now prove it easily</p>
+        <h3 id="Delaunay-triangulation"><a href="#Delaunay-triangulation" class="headerlink" title="Delaunay triangulation"></a>Delaunay triangulation</h3><h5 id="I-Introduction"><a href="#I-Introduction" class="headerlink" title="I.Introduction"></a>I.Introduction</h5><p>A Delaunay triangulation for a set P of points in a plane is a triangulation DT(P) such that no point in P is inside any triangle in DT(P).<br>i.e. it’s required to use every point in the set to form triangles which do not cross each other.</p>
+<p><img src="/images/pasted-3.png" alt="upload successful"></p>
+<p>Delaunay triangulations maximize the minimum angle of all triangles in the triangulation; they tend to avoid sliver triangles which means those with angle larger than 180 degree. </p>
+<h5 id="II-Properties"><a href="#II-Properties" class="headerlink" title="II.Properties"></a>II.Properties</h5><p>Let n be the number of points and d the number of dimensions.(unfinished)<br>1.</p>
+<h5 id="III-Visual-Delaunay-generation"><a href="#III-Visual-Delaunay-generation" class="headerlink" title="III.Visual Delaunay generation"></a>III.Visual Delaunay generation</h5><p>Here are Triangles ABD and BCD which share the same edge BD:</p>
+<p><img src="/images/pasted-4.png" alt="upload successful"></p>
+<p>It has angles larger than 180 degree. It violate the rule of Delaunay triangulation. To show if we have link the triangles as required, we can draw a circle using 3 of the points on the same triangle like in here ABD, we found the other point is inside the circle.</p>
+<p><img src="/images/pasted-5.png" alt="upload successful"></p>
+<p>On the other hand, now the points meet the requirement. </p>
+<p><img src="/images/pasted-6.png" alt="upload successful"></p>
+<p>As you can see, if two triangles do not meet the Delaunay condition, switching the common edge BD for the common edge AC produces two triangles that do meet the Delaunay condition</p>
+<h6 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h6><p>(not finished)</p>
+<p>Many algorithms for computing Delaunay triangulations rely on fast operations for detecting when a point is within a triangle’s circumcircle and an efficient data structure for storing triangles and edges. In two dimensions, one way to detect if point D lies in the circumcircle of A, B, C is to evaluate the </p>
 
       
     </div>
@@ -318,13 +319,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/25/My-New-Post/">Similarity Transformation in Geometry</a></p>
+        <p><span>本文标题:</span><a href="/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/">Delaunay Trianglulation and subdivision under opencv</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Syd SHI YI</a></p>
-        <p><span>发布时间:</span>2017-04-25, 03:50:00</p>
-        <p><span>最后更新:</span>2017-05-05, 01:04:51</p>
+        <p><span>发布时间:</span>2017-05-10, 02:19:05</p>
+        <p><span>最后更新:</span>2017-05-10, 02:44:07</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/25/My-New-Post/" title="Similarity Transformation in Geometry">http://yoursite.com/2017/04/25/My-New-Post/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/25/My-New-Post/　　作者: Syd SHI YI" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/" title="Delaunay Trianglulation and subdivision under opencv">http://yoursite.com/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/　　作者: Syd SHI YI" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -336,12 +337,12 @@
 
     <nav id="article-nav">
         
-        
-            <div id="article-nav-older" class="article-nav-title">
+            <div id="article-nav-newer" class="article-nav-title">
                 <a href="/2017/04/25/hello-world/">
                     Average Face Generation
                 </a>
             </div>
+        
         
     </nav>
 
@@ -351,7 +352,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Similarity-Transformation"><span class="toc-number">1.</span> <span class="toc-text">Similarity Transformation</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Delaunay-triangulation"><span class="toc-number">1.</span> <span class="toc-text">Delaunay triangulation</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#I-Introduction"><span class="toc-number">1.0.1.</span> <span class="toc-text">I.Introduction</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#II-Properties"><span class="toc-number">1.0.2.</span> <span class="toc-text">II.Properties</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#III-Visual-Delaunay-generation"><span class="toc-number">1.0.3.</span> <span class="toc-text">III.Visual Delaunay generation</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Algorithms"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">Algorithms</span></a></li></ol></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -387,7 +388,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Similarity Transformation in Geometry　| Syd　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Delaunay Trianglulation and subdivision under opencv　| Syd　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -407,15 +408,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/04/25/hello-world/" title="上一篇: Average Face Generation">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/04/25/hello-world/" title="下一篇: Average Face Generation">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 

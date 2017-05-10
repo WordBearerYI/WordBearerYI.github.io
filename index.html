@@ -262,6 +262,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Delaunay-Triangle-and-subdivision-under-opencv" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/" class="article-date">
+      <time datetime="2017-05-10T00:19:05.000Z" itemprop="datePublished">2017-05-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/10/Delaunay-Triangle-and-subdivision-under-opencv/">Delaunay Trianglulation and subdivision under opencv</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Delaunay-triangulation"><a href="#Delaunay-triangulation" class="headerlink" title="Delaunay triangulation"></a>Delaunay triangulation</h3><h5 id="I-Introduction"><a href="#I-Introduction" class="headerlink" title="I.Introduction"></a>I.Introduction</h5><p>A Delaunay triangulation for a set P of points in a plane is a triangulation DT(P) such that no point in P is inside any triangle in DT(P).<br>i.e. it’s required to use every point in the set to form triangles which do not cross each other.</p>
+<p><img src="/images/pasted-3.png" alt="upload successful"></p>
+<p>Delaunay triangulations maximize the minimum angle of all triangles in the triangulation; they tend to avoid sliver triangles which means those with angle larger than 180 degree. </p>
+<h5 id="II-Properties"><a href="#II-Properties" class="headerlink" title="II.Properties"></a>II.Properties</h5><p>Let n be the number of points and d the number of dimensions.(unfinished)<br>1.</p>
+<h5 id="III-Visual-Delaunay-generation"><a href="#III-Visual-Delaunay-generation" class="headerlink" title="III.Visual Delaunay generation"></a>III.Visual Delaunay generation</h5><p>Here are Triangles ABD and BCD which share the same edge BD:</p>
+<p><img src="/images/pasted-4.png" alt="upload successful"></p>
+<p>It has angles larger than 180 degree. It violate the rule of Delaunay triangulation. To show if we have link the triangles as required, we can draw a circle using 3 of the points on the same triangle like in here ABD, we found the other point is inside the circle.</p>
+<p><img src="/images/pasted-5.png" alt="upload successful"></p>
+<p>On the other hand, now the points meet the requirement. </p>
+<p><img src="/images/pasted-6.png" alt="upload successful"></p>
+<p>As you can see, if two triangles do not meet the Delaunay condition, switching the common edge BD for the common edge AC produces two triangles that do meet the Delaunay condition</p>
+<h6 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h6><p>(not finished)</p>
+<p>Many algorithms for computing Delaunay triangulations rely on fast operations for detecting when a point is within a triangle’s circumcircle and an efficient data structure for storing triangles and edges. In two dimensions, one way to detect if point D lies in the circumcircle of A, B, C is to evaluate the </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -291,21 +359,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>After days of trying, I finally made it work! The program is based on python and opencv </p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Face-Landmark-detection"><a href="#Face-Landmark-detection" class="headerlink" title="Face Landmark detection"></a>Face Landmark detection</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> dlib</div><div class="line">PREDICTOR_PATH = <span class="string">"/shape_predictor_68_face_landmarks.dat"</span></div><div class="line"><span class="comment">#TensorFace/openface/models/dlib/shape_predictor_68_face_landmarks.dat</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">detectFaceKeyPoint</span><span class="params">(img)</span>:</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">NoFaces</span><span class="params">(Exception)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line">    rects = detector(img,<span class="number">1</span>)</div><div class="line">    <span class="keyword">if</span> len(rects) &gt; <span class="number">1</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"multiple faces detected!"</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    <span class="keyword">elif</span> len(rects) == <span class="number">0</span>:</div><div class="line">        <span class="keyword">raise</span> NoFaces</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    <span class="keyword">elif</span> len(rects) == <span class="number">1</span>:</div><div class="line">        landmarks = np.array([[p.x,p.y] <span class="keyword">for</span> p <span class="keyword">in</span> predictor(img,rects[<span class="number">0</span>]).parts()])</div></pre></td></tr></table></figure>
+        <p>After days of trying, I finally made it work! The program is based on Python and Opencv, a library which is used in the area of computer vision.</p>
+<h3 id="Face-Landmark-detection"><a href="#Face-Landmark-detection" class="headerlink" title="Face Landmark detection"></a>Face Landmark detection</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> dlib</div><div class="line">PREDICTOR_PATH = <span class="string">"/shape_predictor_68_face_landmarks.dat"</span></div><div class="line"><span class="comment">#TensorFace/openface/models/dlib/shape_predictor_68_face_landmarks.dat</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">detectFaceKeyPoint</span><span class="params">(img)</span>:</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">NoFaces</span><span class="params">(Exception)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line">    rects = detector(img,<span class="number">1</span>)</div><div class="line">    <span class="keyword">if</span> len(rects) &gt; <span class="number">1</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"multiple faces detected!"</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    <span class="keyword">elif</span> len(rects) == <span class="number">0</span>:</div><div class="line">        <span class="keyword">raise</span> NoFaces</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    <span class="keyword">elif</span> len(rects) == <span class="number">1</span>:</div><div class="line">        landmarks = np.array([[p.x,p.y] <span class="keyword">for</span> p <span class="keyword">in</span> predictor(img,rects[<span class="number">0</span>]).parts()])</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Face-Landmarks-detection"><a href="#Face-Landmarks-detection" class="headerlink" title="Face Landmarks detection"></a>Face Landmarks detection</h3><p>We need to align all key elements on the face  in order to generate a clear average face image. </p>
 <p>First of all we need to make pictures into the same size, furthermore, making all of the heads into the same scale. As a matter of fact, people have approximately equavelant distance between their two eye corners.</p>
 <p>To find the eye corner on every face, we can use the previous found face landmarks.<br>Left eye corner is point Number 36, right corner is 45.</p>
 <p><img src="/images/sblc.jpg" width="50%" height="50%"></p>
-<h3 id="Naive-Face-Averaging"><a href="#Naive-Face-Averaging" class="headerlink" title="Naïve Face Averaging"></a>Naïve Face Averaging</h3><p>It’s called naïve face averaging. We just align the eye corners of our frontal face image before we take average on the grey scale on every pixels. Be careful to make all grey value between 0-1.</p>
+<h3 id="Naive-Face-Averaging"><a href="#Naive-Face-Averaging" class="headerlink" title="Naïve Face Averaging"></a>Naïve Face Averaging</h3><p>It’s called naïve face averaging. We align the eye corners of our frontal face image before we take average on the grey scale on every pixels. Be careful to make all grey value between 0-1.</p>
 <p><img src="/images/naive_avg_face.jpg" alt="naive" title="naive face averaging result"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">forceAvg</span><span class="params">(totalImagesArray)</span>:</span></div><div class="line">    sumimg=np.zeros((fixed_width,fixed_height))</div><div class="line">    totalImagesArray = np.array(totalImagesArray)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(totalImagesArray)):</div><div class="line">        sumimg = sumimg + totalImagesArray[i]</div><div class="line">    <span class="comment">#sumimg = sum (totalImagesArray)</span></div><div class="line">    <span class="comment">#print np.shape(sumimg),sumimg</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"sum"</span>, sumimg,<span class="string">"shape"</span>,np.shape(sumimg)</div><div class="line">    sumimg = sumimg / len(totalImagesArray)/<span class="number">256</span></div><div class="line">    <span class="comment">#sumimg = sumimg.astype(int)</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"avg"</span>, sumimg,<span class="string">"shape"</span>,np.shape(sumimg)</div><div class="line">    cv2.imshow(<span class="string">"naive"</span>,sumimg)</div><div class="line">    cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<p>The result is far from pretty, the reason of which is different faces have variant distance among the key points like nose, mouth, eyes. Some people have large face size while others are more pointy.</p>
+<p>To deal with the problem, I have to break the face image into pieces and align all pieces  individually to get a ideal result.</p>
+<p>A concept called Delaunay Triangle is introduced to seperate all features. </p>
+<h3 id="Planar-Subdivisions-Delaunay-Triangle"><a href="#Planar-Subdivisions-Delaunay-Triangle" class="headerlink" title="Planar Subdivisions: Delaunay Triangle"></a>Planar Subdivisions: Delaunay Triangle</h3><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Detail of Delaunay Triangle</a></p>
 
       
     </div>
