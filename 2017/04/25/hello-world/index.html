@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-04-25</span>
-            <span class="time">01:54:08</span>
+            <span class="time">02:11:30</span>
           </span>
           
         </div>
@@ -109,6 +109,10 @@
         <!-- Post Main Content -->
         <div class="post-content">
           <p>After days of trying, I finally made it work! The program is based on Python and Opencv, a library which is used in the area of computer vision.</p>
+<p>categories:</p>
+<ul>
+<li>Computer Vision<br>tags:</li>
+</ul>
 <h3 id="Face-Landmark-detection"><a href="#Face-Landmark-detection" class="headerlink" title="Face Landmark detection"></a>Face Landmark detection</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> dlib</div><div class="line">PREDICTOR_PATH = <span class="string">"/shape_predictor_68_face_landmarks.dat"</span></div><div class="line"><span class="comment">#TensorFace/openface/models/dlib/shape_predictor_68_face_landmarks.dat</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">detectFaceKeyPoint</span><span class="params">(img)</span>:</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">NoFaces</span><span class="params">(Exception)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line">    rects = detector(img,<span class="number">1</span>)</div><div class="line">    <span class="keyword">if</span> len(rects) &gt; <span class="number">1</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"multiple faces detected!"</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    <span class="keyword">elif</span> len(rects) == <span class="number">0</span>:</div><div class="line">        <span class="keyword">raise</span> NoFaces</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    <span class="keyword">elif</span> len(rects) == <span class="number">1</span>:</div><div class="line">        landmarks = np.array([[p.x,p.y] <span class="keyword">for</span> p <span class="keyword">in</span> predictor(img,rects[<span class="number">0</span>]).parts()])</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Face-Landmarks-detection"><a href="#Face-Landmarks-detection" class="headerlink" title="Face Landmarks detection"></a>Face Landmarks detection</h3><p>We need to align all key elements on the face  in order to generate a clear average face image. </p>
